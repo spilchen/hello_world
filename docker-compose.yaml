@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  crdb_24:
+    image: cockroachdb/cockroach:v24.3.0
+    environment:
+      - COCKROACH_DATABASE=hello_world
+      - COCKROACH_USER=hello
+      - COCKROACH_PASSWORD=world
+    command: >
+      start-single-node
+      --http-addr=:8080
+      --listen-addr=:26257
+      --sql-addr=:5432
+      --accept-sql-without-tls
+    hostname: crdb24
+  crdb_23:
+    image: cockroachdb/cockroach:v23.1.12
+    environment:
+      - COCKROACH_DATABASE=hello_world
+      - COCKROACH_USER=hello
+      - COCKROACH_PASSWORD=world
+    command: >
+      start-single-node
+      --http-addr=:8080
+      --listen-addr=:26257
+      --sql-addr=:5432
+      --accept-sql-without-tls
+    hostname: crdb23
+
+networks:
+  default:
+    driver: bridge
