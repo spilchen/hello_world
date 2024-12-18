@@ -1,6 +1,12 @@
 # HelloWorld
 
-**TODO: Add description**
+# Instructions
+
+Here are the steps I took to run this against a local single-node cockroach instance:
+1. `docker build -t hello_world:latest .`
+2. `./cockroach start-single-node --insecure`
+3. `docker run -it --rm --network host -e DB_HOSTNAME=localhost -e DB_PORT=26257 hello_world:latest`
+
 
 ## Installation
 
